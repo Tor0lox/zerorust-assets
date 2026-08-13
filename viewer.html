@@ -12,9 +12,7 @@ html,body{
     overflow:hidden;
     background:transparent!important;
 }
-body{
-    position:relative;
-}
+body{position:relative}
 model-viewer{
     position:absolute;
     inset:-10%;
@@ -24,52 +22,52 @@ model-viewer{
     --poster-color:transparent;
     --progress-bar-color:#f15a29;
     --progress-bar-height:2px;
-    touch-action:pan-y;
-    cursor:grab;
-}
-model-viewer:active{
-    cursor:grabbing;
-}
-.credit{
-    position:absolute;
-    right:9px;
-    bottom:7px;
-    z-index:10;
-    color:rgba(255,255,255,.24);
-    font:600 8px/1.2 system-ui,sans-serif;
-    text-decoration:none;
-    letter-spacing:.02em;
-}
-.credit:hover{
-    color:rgba(255,255,255,.55);
+    pointer-events:none;
 }
 </style>
 <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
 <model-viewer
+    id="weapon"
     src="./ak47_rust.glb"
     alt="AK47 Rust"
     loading="eager"
     reveal="auto"
     environment-image="neutral"
-    shadow-intensity=".75"
+    shadow-intensity=".78"
     shadow-softness=".9"
     exposure="1.08"
-    camera-controls
-    disable-pan
     camera-orbit="70deg 76deg 67%"
-    min-camera-orbit="35deg 62deg 57%"
-    max-camera-orbit="105deg 92deg 84%"
     field-of-view="20deg"
-    min-field-of-view="17deg"
-    max-field-of-view="27deg"
     orientation="0deg 0deg -4deg"
     interaction-prompt="none">
 </model-viewer>
-<a class="credit"
-   href="https://sketchfab.com/3d-models/ak47-rust-e62f7e5b297046a9872ed362b9706654"
-   target="_blank"
-   rel="noopener noreferrer">Kuba.Bajster · CC BY</a>
+<script>
+(() => {
+    const viewer = document.getElementById('weapon');
+
+    window.addEventListener('message', (event) => {
+        if (event.source !== window.parent)
+            return;
+
+        const data = event.data;
+        if (!data || data.type !== 'zr-weapon-orbit')
+            return;
+
+        const yaw = Number(data.yaw);
+        const pitch = Number(data.pitch);
+        const distance = Number(data.distance);
+
+        if (![yaw, pitch, distance].every(Number.isFinite))
+            return;
+
+        viewer.setAttribute(
+            'camera-orbit',
+            `${yaw.toFixed(2)}deg ${pitch.toFixed(2)}deg ${distance.toFixed(2)}%`
+        );
+    });
+})();
+</script>
 </body>
 </html>
