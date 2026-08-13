@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<style>
+html,body{
+    width:100%;
+    height:100%;
+    margin:0;
+    overflow:hidden;
+    background:transparent;
+}
+
+body{
+    position:relative;
+}
+
+model-viewer{
+    position:absolute;
+    inset:-8%;
+    width:116%;
+    height:116%;
+    background:transparent;
+    --poster-color:transparent;
+    --progress-bar-color:#f15a29;
+    --progress-bar-height:2px;
+}
+
+.credit{
+    position:absolute;
+    right:8px;
+    bottom:6px;
+    z-index:5;
+    color:rgba(255,255,255,.28);
+    font:600 8px/1.2 system-ui,sans-serif;
+    text-decoration:none;
+}
+
+.credit:hover{
+    color:rgba(255,255,255,.62);
+}
+</style>
+
+<script type="module"
+src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js">
+</script>
+</head>
+
+<body>
+
+<model-viewer
+    src="./ak47_rust.glb"
+    alt="AK47 Rust"
+    loading="eager"
+    reveal="auto"
+    environment-image="neutral"
+    shadow-intensity=".65"
+    shadow-softness=".9"
+    exposure="1.08"
+    camera-orbit="72deg 76deg 72%"
+    field-of-view="22deg"
+    orientation="0deg 0deg -5deg"
+    auto-rotate
+    auto-rotate-delay="0"
+    rotation-per-second="7deg"
+    interaction-prompt="none"
+    disable-zoom>
+</model-viewer>
+
+<a class="credit"
+href="https://sketchfab.com/3d-models/ak47-rust-e62f7e5b297046a9872ed362b9706654"
+target="_blank"
+rel="noopener noreferrer">
+Kuba.Bajster · CC BY
+</a>
+
+</body>
+</html>
