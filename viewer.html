@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta name="color-scheme" content="dark">
 <style>
 html,body{
@@ -10,71 +10,66 @@ html,body{
     height:100%;
     margin:0;
     overflow:hidden;
-    background:transparent;
+    background:transparent!important;
 }
-
 body{
     position:relative;
 }
-
 model-viewer{
     position:absolute;
-    inset:-8%;
-    width:116%;
-    height:116%;
-    background:transparent;
+    inset:-10%;
+    width:120%;
+    height:120%;
+    background:transparent!important;
     --poster-color:transparent;
     --progress-bar-color:#f15a29;
     --progress-bar-height:2px;
+    touch-action:pan-y;
+    cursor:grab;
 }
-
+model-viewer:active{
+    cursor:grabbing;
+}
 .credit{
     position:absolute;
-    right:8px;
-    bottom:6px;
-    z-index:5;
-    color:rgba(255,255,255,.28);
+    right:9px;
+    bottom:7px;
+    z-index:10;
+    color:rgba(255,255,255,.24);
     font:600 8px/1.2 system-ui,sans-serif;
     text-decoration:none;
+    letter-spacing:.02em;
 }
-
 .credit:hover{
-    color:rgba(255,255,255,.62);
+    color:rgba(255,255,255,.55);
 }
 </style>
-
-<script type="module"
-src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js">
-</script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
-
 <body>
-
 <model-viewer
     src="./ak47_rust.glb"
     alt="AK47 Rust"
     loading="eager"
     reveal="auto"
     environment-image="neutral"
-    shadow-intensity=".65"
+    shadow-intensity=".75"
     shadow-softness=".9"
     exposure="1.08"
-    camera-orbit="72deg 76deg 72%"
-    field-of-view="22deg"
-    orientation="0deg 0deg -5deg"
-    auto-rotate
-    auto-rotate-delay="0"
-    rotation-per-second="7deg"
-    interaction-prompt="none"
-    disable-zoom>
+    camera-controls
+    disable-pan
+    camera-orbit="70deg 76deg 67%"
+    min-camera-orbit="35deg 62deg 57%"
+    max-camera-orbit="105deg 92deg 84%"
+    field-of-view="20deg"
+    min-field-of-view="17deg"
+    max-field-of-view="27deg"
+    orientation="0deg 0deg -4deg"
+    interaction-prompt="none">
 </model-viewer>
-
 <a class="credit"
-href="https://sketchfab.com/3d-models/ak47-rust-e62f7e5b297046a9872ed362b9706654"
-target="_blank"
-rel="noopener noreferrer">
-Kuba.Bajster · CC BY
-</a>
-
+   href="https://sketchfab.com/3d-models/ak47-rust-e62f7e5b297046a9872ed362b9706654"
+   target="_blank"
+   rel="noopener noreferrer">Kuba.Bajster · CC BY</a>
 </body>
 </html>
