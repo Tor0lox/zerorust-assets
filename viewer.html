@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:transparent}
+body{display:grid;place-items:center}
+model-viewer{width:100%;height:100%;background:transparent;--poster-color:transparent}
+.credit{position:absolute;right:10px;bottom:8px;font:600 9px/1.2 system-ui,sans-serif;color:rgba(255,255,255,.34);text-decoration:none;letter-spacing:.02em}
+.credit:hover{color:rgba(255,255,255,.7)}
+</style>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+<model-viewer
+src="./ak47_rust.glb"
+alt="AK47 Rust"
+loading="eager"
+reveal="auto"
+shadow-intensity="1"
+exposure="1.05"
+environment-image="neutral"
+camera-orbit="70deg 78deg 110%"
+field-of-view="26deg"
+auto-rotate
+rotation-per-second="10deg"
+interaction-prompt="none"
+disable-zoom>
+</model-viewer>
+<a class="credit" href="https://sketchfab.com/3d-models/ak47-rust-e62f7e5b297046a9872ed362b9706654" target="_blank" rel="noopener noreferrer">Kuba.Bajster · CC BY</a>
+</body>
+</html>
